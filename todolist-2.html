@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h1>Formulario</h1>
+    <form class="formulario" id="formulario"> <!-- Cambiado className por class -->
+        <input type="text" placeholder="Escribe tu tarea" id="texto">
+        <button type="submit">Enviar</button>
+    </form>
+
+    <h1>Lista de tareas</h1>
+    <ul>
+        
+    </ul>
+
+</body>
+
+<script>
+
+    let tarea = "";
+
+    document.addEventListener("DOMContentLoaded", function () { // Asegura que el DOM esté cargado
+        const formulario = document.getElementById("formulario");
+        formulario.addEventListener("submit", function (event) {
+            event.preventDefault();
+            const tarea = document.getElementById('texto').value;
+            console.log(tarea); // Muestra el valor en la consola
+            nuevatarea (tarea);
+        });
+    });
+
+    function nuevatarea (tarea) {
+        const lista = document.querySelector("ul");
+        const nuevaTarea = document.createElement("li");
+        nuevaTarea.textContent = tarea;
+        lista.appendChild(nuevaTarea);
+
+}
+</script>
+
+</html>

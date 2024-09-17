@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+
+</head>
+<body>
+
+<div class="container mt-5">
+  <div class="card">
+     
+    
+    <div class="card-body">
+      <div class="form-group">
+        <h5 class="card-title">Añade tu tarea</h5>
+        <input type="text" class="form-control" id="texto" aria-describedby="Añade tarea" placeholder="Escribe tu tarea">
+      </div>
+      <button type="button" class="btn btn-primary mt-3" id="envio">Enviar</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="container" id="contenedor">
+    <div class="card">
+         <div class="card-body">
+        <h5 class="card-title">Lista de tareas</h5>
+
+              <ul class="list-group-item"  id="ul">
+
+              </ul>
+     
+    
+         </div>
+
+    </div>
+     
+    
+    
+</body>
+
+
+<script> 
+
+2. //GUARDAR LOS GET ELEMENT EN UNA VARIABLE
+const getText= document.getElementById("texto")
+const getButton = document.getElementById("envio")
+
+
+3. // PONER UN ESCUCHADOR AL BOTON EN CUYA FUNCION ESCUCHE LO QUE VIENE DEL INPUT
+getButton.addEventListener("click", function (event) {
+    const tarea = document.getElementById("texto").value
+    console.log(tarea)
+
+    if (tarea.trim() !== '') {
+        // 4.  PINTAR LAS TAREAS QUE VIENEN DEL INPUT EN LI
+        const tareaPintada = document.createElement('li')
+        tareaPintada.textContent = tarea;
+        tareaPintada.classList.add('list-group-item'); // Aplicar estilo de Bootstrap
+        
+        // 5.  PINTAR LOS LI EN UL
+        const ul = document.getElementById("ul");
+        ul.appendChild(tareaPintada)
+    }
+
+    
+});
+
+
+
+
+
+
+
+
+
+
+
+    // // Crear un nuevo elemento 
+
+    // var nuevoParrafo = document.createElement("p");
+
+    // // Agregar el contenido al nuevo elemento
+    // nuevoParrafo.textContent = "Este es un nuevo párrafo.";
+
+    // // Obtener el elemento padre al que se va a agregar el nuevo elemento
+    // var contenedor = document.getElementById("contenedor");
+
+    // // Agregar el nuevo elemento al DOM
+    // contenedor.appendChild(nuevoParrafo);
+
+
+
+</script>
+
+
+
+</html>

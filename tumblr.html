@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio de Imágenes</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
+
+        body {
+            font-family: 'Questrial', sans-serif;
+            font-weight: 600;
+            /* Actualizar aquí */
+            background-color: #fff6e9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            float: left;
+            display: block;
+            color: #1c232e;
+            text-align: center;
+            padding: 14px 20px 14px;
+            margin-left: 25px;
+            margin-top: 20px;
+            text-decoration: none;
+            font-family: 'Questrial', sans-serif;
+            /* Actualizar aquí */
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            display: block;
+            margin-top: 5px;
+            right: 0;
+            background: #fc756b;
+            transition: width .3s ease;
+            -webkit-transition: width .3s ease color: #fc756b;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+            left: 0;
+            background: #fc756b;
+            color: #fc756b;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 30px;
+            padding-top: 80px;
+            width: 100%;
+        }
+
+        .gallery img,
+        .gallery video {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            margin: 10px;
+            cursor: pointer;
+            border: 0px solid #ccc;
+            transition: transform 0.2s;
+        }
+
+        .gallery img:hover,
+        .gallery video:hover {
+            transform: scale(1.05);
+            border-color: #666;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a href="#brand" onclick="loadImages('brand')">Brand</a>
+        <a href="#online" onclick="loadImages('online')">Online</a>
+        <a href="#offline" onclick="loadImages('offline')">Offline</a>
+        <a href="#illustration" onclick="loadImages('illustration')">Illustration</a>
+
+        <a href="#contact" onclick="loadImages('contact')">Contact</a>
+        <a href="#about" onclick="loadImages('about')">About</a>
+    </nav>
+
+    <div id="gallery" class="gallery">
+        <!-- Imágenes y videos se cargarán aquí -->
+    </div>
+
+    <script>
+        const images = {
+
+
+            brand: [
+                { thumb: 'https://64.media.tumblr.com/f186db670980cb1d653b3aae4b1d8843/a5323ad9ef0381bc-f5/s1280x1920/bf65983c963ce67c79949854ccede6f4d821f102.pnj', hover: 'https://64.media.tumblr.com/88da1b0f596b81cb010da2ee77d2d259/e2cf18ccd4cdb481-c1/s1280x1920/990077e0a280bd4a97694778571d9201c397f661.pnj', alt: 'Imagen Principal' },
+                { thumb: 'https://64.media.tumblr.com/f9e3b01db385e0fe6ec1d2641782c2fa/8748c236bffe2710-f3/s1280x1920/f3af0440c7acd392496546b656bf40edd5f3f8f4.pnj', alt: 'Imagen Principal', hover: 'https://64.media.tumblr.com/f9e3b01db385e0fe6ec1d2641782c2fa/8748c236bffe2710-f3/s1280x1920/f3af0440c7acd392496546b656bf40edd5f3f8f4.pnj' },
+                { thumb: 'https://64.media.tumblr.com/5f0afc9c44898507c481c1f80eb30a67/dc5f33dfb1bfedce-6b/s1280x1920/8529ee0d70705b8b38aa55a65c710ec34f363a4e.pnj', hover: 'https://64.media.tumblr.com/33080177735eabf38213ad345935e1ac/9675a5d7e84e03fc-bf/s1280x1920/5afbb224390831ef1ef96d7b804fe3f3775344cc.pnj', alt: 'Imagen Principal' },
+                { thumb: 'https://64.media.tumblr.com/6d48a18df7004f6f480eaeebc9da05b0/0c299af243e43116-90/s1280x1920/c0583968074a1ab5af27ba1dbc968b95d8b663ab.pnj', hover: 'https://64.media.tumblr.com/d53c0003f2584d8debe125138bc92fd1/fb7ea35312b891ea-cd/s640x960/7b4fcb823958be985539d4e92435b9d671817734.pnj', alt: 'Imagen Principal' },
+                // Añade más imágenes para la categoría 'brand'
+            ],
+
+
+
+            online: [
+                { thumb: 'https://va.media.tumblr.com/tumblr_sjco44SZp61te8nh1_720.mp4', alt: 'Video Principal' },
+                { thumb: 'https://64.media.tumblr.com/2c6c8fd09b9c7ac3e85564e21a6b57e7/16c26793cf9943ac-65/s1280x1920/61c5bc956cc1a2c101a402bebf1eadcef259b714.jpg', alt: 'Imagen Principal' },
+                { thumb: 'https://va.media.tumblr.com/tumblr_sjiocelxeY1te8nh1_720.mp4', alt: 'Video Principal' },
+                { thumb: 'https://64.media.tumblr.com/bf7724d5ae6d815ebd235d83ca74aa9d/9b3a5b7ba932d943-44/s1280x1920/9002ef99753f3a075e46173e656ccbcd0e6b619a.pnj', alt: 'Video Principal' },
+
+                { thumb: 'https://64.media.tumblr.com/6bebf317bb82e83a3d16b0bc7a4ea7a3/38b457e677983222-73/s1280x1920/7506991b1bab8b919b73b0361bacead5cd06a81a.jpg', alt: 'Video Principal' },
+
+                // Añade más imágenes para la categoría 'online'
+            ],
+
+
+
+
+            offline: [
+                // Añade imágenes para la categoría 'offline'
+            ],
+
+
+
+
+
+
+            illustration: [
+
+                {
+                    thumb: 'https://64.media.tumblr.com/07d8e0a188e8237303564d49c51812c0/4790b1ab9113695f-bd/s640x960/eca4077f5184ac373df47a6557a33d78d715d82e.jpg',
+                    alt: 'Imagen Principal',
+                    gallery: [
+                        'https://64.media.tumblr.com/07d8e0a188e8237303564d49c51812c0/4790b1ab9113695f-bd/s640x960/eca4077f5184ac373df47a6557a33d78d715d82e.jpg',
+                        'https://64.media.tumblr.com/034ad51fab996520ba2fbc7f6c845297/3c8f76313adba91a-55/s2048x3072/8777f6230393f7f180df68315290ab981c1c76aa.jpg',
+                        // Agrega más imágenes al grupo si es necesario
+                    ]
+                },
+
+
+
+
+                { thumb: 'https://64.media.tumblr.com/07d8e0a188e8237303564d49c51812c0/4790b1ab9113695f-bd/s640x960/eca4077f5184ac373df47a6557a33d78d715d82e.jpg' },
+
+                { thumb: ' https://64.media.tumblr.com/034ad51fab996520ba2fbc7f6c845297/3c8f76313adba91a-55/s2048x3072/8777f6230393f7f180df68315290ab981c1c76aa.jpg', alt: 'Imagen Principal' },
+
+
+
+                { thumb: 'https://64.media.tumblr.com/86ca979a2b1e1e8a1b3ff08c2b06420f/478bd1d389c6c7d1-6f/s1280x1920/d638636aedfe2f220d6d811ecf477260d723f378.jpg', alt: 'Imagen Principal' },
+
+
+
+                { thumb: ' https://64.media.tumblr.com/cfa3919ddf9b68883b16a612e04c7d8b/18db033f1ed64cd0-71/s1280x1920/039b5dc7157ab672b120c4df2ca0fe2ca0cc4a0f.jpg', alt: 'Imagen Principal' },
+
+
+
+                { thumb: ' https://64.media.tumblr.com/e7e8836d39a0193e1507f0f7c17b3603/d4178f7b67dd06a5-d1/s1280x1920/522354f7207ba26eee8c3a73a7ee1167057b53ff.jpg', alt: 'Imagen Principal' },
+
+
+
+                { thumb: ' https://64.media.tumblr.com/06b71555d270a3ada64e4f1e2d5ed72b/bac89fc830781cf3-bb/s2048x3072/2f42a690ca5503dbadc07e4cbdc4ab1510dd1b3b.pnj', alt: 'Imagen Principal' },
+
+                { thumb: 'https://64.media.tumblr.com/bba159937955b8e5499f8c19109c5f15/4d17e42f0e8a4c5f-24/s640x960/287f1e0be1608a036d64bebc1afd27a6313823f8.jpg', alt: 'Imagen Principal' },
+
+
+
+
+                { thumb: 'https://64.media.tumblr.com/efbbfba06faa25b5f058ff4491461eb8/f4c78ebb7356cd93-be/s1280x1920/d2e5a99e70d4b6ffd9550434a4233c1c0f8bc750.jpg', alt: 'Imagen Principal' },
+
+
+
+
+
+            ],
+
+            contact: [
+                // Añade imágenes para la categoría 'contact'
+            ],
+            about: [
+                // Añade imágenes para la categoría 'about'
+            ]
+        };
+
+        function loadImages(category) {
+            const gallery = document.getElementById('gallery');
+            gallery.innerHTML = '';
+            images[category].forEach((media) => {
+                const link = document.createElement('a');
+                link.href = media.thumb;  // Enlace para la imagen o video
+                link.target = '_blank';  // Abre en una nueva ventana o pestaña
+
+                if (media.thumb.endsWith('.mp4')) {  // Si es un video
+                    const video = document.createElement('video');
+                    video.src = media.thumb;
+                    video.alt = media.alt;
+                    video.controls = true;  // Añade controles de reproducción
+                    video.className = 'media-item';
+                    link.appendChild(video);
+                } else {  // Si es una imagen
+                    const image = document.createElement('img');
+                    image.src = media.thumb;
+                    image.alt = media.alt;
+                    image.className = 'media-item';
+
+                    // Cambiar la imagen al hacer hover
+                    if (media.hover) {
+                        image.addEventListener('mouseover', () => {
+                            image.src = media.hover;
+                        });
+                        // Restaurar la imagen original al quitar el hover
+                        image.addEventListener('mouseout', () => {
+                            image.src = media.thumb;
+                        });
+                    }
+                    link.appendChild(image);
+                }
+
+                gallery.appendChild(link);
+            });
+        }
+
+        // Cargar imágenes iniciales (puedes cambiar 'brand' por la categoría que quieras mostrar primero)
+        loadImages('brand');
+    </script>
+
+
+</body>
+
+</html>
