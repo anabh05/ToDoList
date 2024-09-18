@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario</title>
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="todolist.css">
 
 </head>
 <body>
 
 <div class="container mt-5">
-  <div class="card">
+  <div class="card w-50 p-3">
      
     
     <div class="card-body">
@@ -27,11 +28,11 @@
 
 
 <div class="container" id="contenedor">
-    <div class="card">
+    <div class="card w-50 p-3">
          <div class="card-body">
         <h5 class="card-title">Lista de tareas</h5>
 
-              <ul class="list-group-item"  id="ul">
+              <ul class="lista"  id="ul">
 
               </ul>
      
@@ -54,22 +55,71 @@ const getButton = document.getElementById("envio")
 
 3. // PONER UN ESCUCHADOR AL BOTON EN CUYA FUNCION ESCUCHE LO QUE VIENE DEL INPUT
 getButton.addEventListener("click", function (event) {
-    const tarea = document.getElementById("texto").value
+    const tarea = document.getElementById("texto").value//VALOR DEL INPUT
     console.log(tarea)
 
+    //SI LA TAREA ESTA VACIA
     if (tarea.trim() !== '') {
-        // 4.  PINTAR LAS TAREAS QUE VIENEN DEL INPUT EN LI
-        const tareaPintada = document.createElement('li')
-        tareaPintada.textContent = tarea;
-        tareaPintada.classList.add('list-group-item'); // Aplicar estilo de Bootstrap
+
+        // 4. CREAR LAS TAREAS QUE VIENEN DEL INPUT EN LI
+        const tareaPintada = document.createElement('li')//tareaPintada creará un LI
         
-        // 5.  PINTAR LOS LI EN UL
+        // Crear el checkBox
+        const check = document.createElement('span') 
+        
+        // Emoji X
+        const eliminar = document.createElement('span');
+        eliminar.textContent = '❌'; 
+        eliminar.style.color = 'red';
+        eliminar.style.cursor = 'pointer';
+
+        // Emoji editar
+        const editar = document.createElement('span');
+        editar.textContent = '✏️';
+        editar.style.cursor = 'pointer';
+
+        // DAR ESTILOS AL LI Y CHEKBOX
+        check.classList.add('checkbox')
+        tareaPintada.textContent = tarea;//cuyo sera el de tarea, dado por el input 
+        tareaPintada.classList.add('list'); // Aplicar estilo de Bootstrap
+        
+        // 5.  PINTAR LOS LI CON CHECKBOX,ELIMINAR Y EDITAR EN UL CON APPENDCHILD
         const ul = document.getElementById("ul");
         ul.appendChild(tareaPintada)
-    }
+        tareaPintada.prepend(check)
+        tareaPintada.appendChild(eliminar)
+        tareaPintada.appendChild(editar)
 
-    
-});
+      
+
+        //6. DAR FUNCIONABILIDAD CHECKBOX PONIENDO EVENTO CLICK CON ADDEVENTLISTENER
+        check.addEventListener("click", function (event) {
+        //cambiar el estilo al checkbox y al texto de la tarea
+        check.classList.toggle('checkClick')
+        tareaPintada.classList.toggle('tareaTachada')
+    })
+
+        //7. DAR FUNCIONABILIDAD A LA X PONIENDO EVENTO CLICK CON ADDEVENTLISTENER
+        eliminar.addEventListener("click", function (event) {
+        const ul = document.getElementById('ul'); // Asegurar que este ID es correcto
+
+        //eliminar tarea
+        ul.removeChild(tareaPintada)
+    })
+
+
+        //8. FUNCION EDITAR PONIENDO EVENTO CLICK CON ADDEVENTLISTENER
+        editar.addEventListener("click", function (event) {
+          input
+        const ul = document.getElementById('ul'); // Asegurar que este ID es correcto
+
+        //editar tarea
+        ul.replaceChild(tareaPintada)
+    })
+
+    }
+})
+
 
 
 
