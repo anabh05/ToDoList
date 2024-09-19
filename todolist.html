@@ -107,23 +107,33 @@ getButton.addEventListener("click", function (event) {
         ul.removeChild(tareaPintada)
     })
 
-
+    console.log(tareaPintada.textContent)
         //8. FUNCION EDITAR PONIENDO EVENTO CLICK CON ADDEVENTLISTENER
         editar.addEventListener("click", function (event) {
 
-        // Crear la tarea de remplazo
-        const tareaNew = document.createElement("span")
-        //Dar atributos
-        tareaNew.setAttribute("id", "newSpan")
-        //Crear contenido
-        const NewContent = document.createTextNode ("Tarea obsoleta")
-        // Aplicar contenido al elemento
-        tareaNew.appendChild(NewContent)
-        // Reemplazo
-        const tareaOld = event.target.closest("li") // obtiene el elemento específico de click. El closest recorre el elemento  padre y llega a la raiz 
-        const padre = tareaOld.parentNode // del padre llega a los hijos ul>li
+        // // Crear la tarea de remplazo
+        // const tareaNew = document.createElement("span")
+        // //Dar atributos
+        // tareaNew.setAttribute("id", "newSpan")
+        // //Crear contenido
+        // const NewContent = document.createTextNode ("Tarea obsoleta")
+        // // Aplicar contenido al elemento
+        // tareaNew.appendChild(NewContent)
+        // // Reemplazo
+        // const tareaOld = event.target.closest("li") // obtiene el elemento específico de click. El closest recorre el elemento  padre y llega a la raiz 
+        // const padre = tareaOld.parentNode // del padre llega a los hijos ul>li
 
-        padre.replaceChild(tareaNew, tareaOld)
+        // padre.replaceChild(tareaNew, tareaOld)
+
+
+        // Suponiendo que tareaPintada es tu <li> generado
+        let tareaPintada = document.querySelector('.list');
+
+        // Acceder al texto de los hijos de tareaPintada
+        let textoTarea = tareaPintada.childNodes[1].textContent.trim();//Elimina espacios en blanco para obtener el contenido necesario.
+
+        console.log(textoTarea);
+
 
 
       
