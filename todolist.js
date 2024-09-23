@@ -41,6 +41,8 @@ getButton.addEventListener("click", function (event) {
         tareaPintada.appendChild(eliminar)
         tareaPintada.appendChild(editar)
 
+        getText.value = ''; // Limpiar el input
+
       
 
         //6. DAR FUNCIONABILIDAD CHECKBOX PONIENDO EVENTO CLICK CON ADDEVENTLISTENER
@@ -73,7 +75,7 @@ getButton.addEventListener("click", function (event) {
                 console.log(textoTarea)
 
                 //Pedir el texto por prompt
-                let pedirTexto = prompt("Tarea editada:", textoTarea.textContent)
+                let pedirTexto = prompt("Tarea editada:" , textoTarea.textContent)
                 console.log(pedirTexto)
 
                 //Crear el texto peido y guardarlo en una variable
