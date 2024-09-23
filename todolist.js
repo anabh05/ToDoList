@@ -58,46 +58,58 @@ getButton.addEventListener("click", function (event) {
         ul.removeChild(tareaPintada)
     })
 
-    console.log(tareaPintada.textContent)
+        console.log(tareaPintada.textContent)
+        
+
         //8. FUNCION EDITAR PONIENDO EVENTO CLICK CON ADDEVENTLISTENER
         editar.addEventListener("click", function (event) {
+            // Seleccionar todos los elementos de .list
+            let tareasPintadas = document.querySelectorAll('.list');
+            // Iterear cada uno de ellos cuando se haga el click
+            tareasPintadas.forEach(function (tarea) {
 
-        // // Crear la tarea de remplazo
-        // const tareaNew = document.createElement("span")
-        // //Dar atributos
-        // tareaNew.setAttribute("id", "newSpan")
-        // //Crear contenido
-        // const NewContent = document.createTextNode ("Tarea obsoleta")
-        // // Aplicar contenido al elemento
-        // tareaNew.appendChild(NewContent)
-        // // Reemplazo
-        // const tareaOld = event.target.closest("li") // obtiene el elemento específico de click. El closest recorre el elemento  padre y llega a la raiz 
-        // const padre = tareaOld.parentNode // del padre llega a los hijos ul>li
+                // Acceder al texto de los hijos de tareaPintada
+                let textoTarea = tareaPintada.childNodes[1];
+                console.log(textoTarea)
 
-        // padre.replaceChild(tareaNew, tareaOld)
+                //Pedir el texto por prompt
+                let pedirTexto = prompt("Tarea editada:", textoTarea.textContent)
+                console.log(pedirTexto)
 
+                //Crear el texto peido y guardarlo en una variable
+                let nuevoTexto = document.createTextNode(pedirTexto.trim()); //Elimina espacios en blanco para obtener el contenido necesario
+                console.log(nuevoTexto)
+            
+                // Reemplazar texto old por el nuevo del prompt
+                tareaPintada.replaceChild(nuevoTexto, textoTarea)
 
-        // Suponiendo que tareaPintada es tu <li> generado
-        let tareaPintada = document.querySelector('.list');
-
-        // Acceder al texto de los hijos de tareaPintada
-        let textoTarea = tareaPintada.childNodes[1];
-        //Pedir el texto por prompt
-        let pedirTexto = prompt("Tarea editada:", textoTarea.textContent)
-        //Crear el texto peido y guardarlo en una variable
-        let nuevoTexto = document.createTextNode(pedirTexto.trim()); //Elimina espacios en blanco para obtener el contenido necesario.
-        
-        // Reemplazar texto old por el nuevo del prompt
-        tareaPintada.replaceChild(nuevoTexto, textoTarea)
-
-
-
-
+            })
       
     })
 
     }
 })
+
+
+
+// // Crear la tarea de remplazo
+    // const tareaNew = document.createElement("span")
+    // //Dar atributos
+    // tareaNew.setAttribute("id", "newSpan")
+    // //Crear contenido
+    // const NewContent = document.createTextNode ("Tarea obsoleta")
+    // // Aplicar contenido al elemento
+    // tareaNew.appendChild(NewContent)
+    // // Reemplazo
+    // const tareaOld = event.target.closest("li") // obtiene el elemento específico de click. El closest recorre el elemento  padre y llega a la raiz 
+    // const padre = tareaOld.parentNode // del padre llega a los hijos ul>li
+
+    // padre.replaceChild(tareaNew, tareaOld)
+
+
+    // Suponiendo que tareaPintada es tu <li> generado
+
+
 
 
 
